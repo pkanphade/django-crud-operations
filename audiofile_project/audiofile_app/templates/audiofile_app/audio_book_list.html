@@ -1,0 +1,37 @@
+{% extends 'audiofile_app/base.html' %}
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Narrator</td>
+            <td>Duration</td>
+            <td>Uploaded Time</td>
+            <td><a href="{% url 'audio_book_add' %}" role="button" class="btn btn-success">Add</a></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for audio_book in audio_book_list %}
+            <tr>
+                <td>{{audio_book.id}}</td>
+                <td><a href="{% url 'audio_book_detail' audio_book.id %}" role="button">{{audio_book.title}}</a></td>
+                <td>{{audio_book.author}}</td>
+                <td>{{audio_book.narrator}}</td>
+                <td>{{audio_book.duration}}</td>
+                <td>{{audio_book.uploaded_time}}</td>
+                <td>
+                    <a href="{% url 'audio_book_update' audio_book.id %}" role="button" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <form action="#" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

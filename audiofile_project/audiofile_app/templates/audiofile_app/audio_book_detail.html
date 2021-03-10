@@ -1,0 +1,10 @@
+{% extends 'audiofile_app/base.html' %}
+{% block content %}
+<h4>Title: {{audio_book.title}}</h4>
+<p>Author: {{audio_book.author}}</p>
+<p>Narrator: {{audio_book.narrator}}</p>
+<p>Duration: {{audio_book.duration}}</p>
+<p>Uploaded Time: {{audio_book.uploaded_time}}</p>
+<a href="{% url 'audio_book_list' %}" role="button" class="btn btn-primary">Back to List</a>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'audiofile_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="" method="POST" id="form_id" autocomplete="off">
+    <div class="container">
+        {% csrf_token %}
+        {{form.title|as_crispy_field}}
+        {{form.author|as_crispy_field}}
+        {{form.narrator|as_crispy_field}}
+        {{form.duration|as_crispy_field}}
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-success">Add Record</button>
+                <a href="{% url 'audio_book_list' %}" class="btn btn-secondary">Back to list</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
